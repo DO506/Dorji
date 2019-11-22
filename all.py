@@ -1,6 +1,10 @@
+#Nge charo assignment 2
+#Import tkinter  
 from Tkinter import *
 from Tkinter import Tk
-
+#insert : that registers the details of friends 
+#declare each function for every button
+#for registeration i have declared insert function that collects the deatils of yor friends
 def Register_info():
 	name_info = name.get()
 	gender_info = gender.get()
@@ -8,7 +12,7 @@ def Register_info():
 	address_info = address.get()
 	number_info = number.get()
 	email_info = email.get()
-
+#i have created a file so that the registered friends details will be recorded in database.txt
 	file = open("Database.txt", "a")
 	file.write("name:" +name_info+ "\n")
 	file.write("Gender:" +gender_info+ "\n")
@@ -72,7 +76,7 @@ def Insert():
 	Label(screen1,text = " ").pack()
 	Button(screen1, text = "Enter", width = 10, height = 1, command = Register_info).pack()
 	
-
+#declared a Display function to display the total no of friends that you have registered in the above function 
 def Display():
     global screen2
     screen2 = Toplevel()
@@ -89,7 +93,7 @@ def Display():
     Label(screen2, text=count).pack()
     Label(screen2, text=" ").pack()
 
-    #=============graph=======================================
+ #for the compare the no. of male friend and no .of femalre friend i have used pie graph to for comparision
     Label(screen2, text="Graph: ", font=("times new roman", 12, "bold")).pack()
     import matplotlib.pyplot as p
     with open("Database.txt", 'r') as f:
@@ -106,8 +110,7 @@ def Display():
     Label(screen2, text=count_female).pack()
     Label(screen2, text=p.show()).pack()
     
-
-
+#in this search function when you enter the name you want want to search you will get your friends details
 def Search():
 	global screen3
 	screen3 = Toplevel(screen)
@@ -135,6 +138,7 @@ def search():
 	else:
 		b = "Search result not found"
 		Label(screen3, text = b).pack()	
+#this delete function remove the details of a friend from the database.txt 
 	
 def Delete():
 	global screen4
@@ -152,6 +156,7 @@ def Delete():
 	delete_entry.pack()
 	Label(screen4,text = " ").pack()
 	Button(screen4,text = "Delete", bg = "red" ,height= "1", width= "10", command = delete).pack()
+
 def delete():
 	delete_info = delete.get()
 	with open("Database.txt", "r")	as f:
@@ -164,7 +169,7 @@ def delete():
 
 	Label(screen4, text="Successful!",font=("calibri",12)).pack()
 
-	
+#main_screen function call all the function declared above	
 def main_screen():
 	global screen
 	screen = Toplevel()
